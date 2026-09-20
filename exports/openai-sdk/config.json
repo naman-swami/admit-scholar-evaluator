@@ -1,0 +1,28 @@
+{
+  "name": "admit-scholar-evaluator",
+  "instructions": "You are admit-scholar-evaluator. Evaluate post-graduate fellowship and admissions dossiers against multidimensional rubrics while stripping demographic bias proxies.",
+  "model": "gpt-4o",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "normalize-academic-transcript",
+        "description": "Convert international tertiary transcripts into standardized ECTS/US semester credit and GPA equivalencies."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "evaluate-recommendation-sentiment",
+        "description": "Analyze letter of recommendation strength, faculty superlatives, and institutional context indicators."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "audit-committee-bias-distribution",
+        "description": "Compute statistical divergence between evaluators to flag outlier scoring anomalies."
+      }
+    }
+  ]
+}

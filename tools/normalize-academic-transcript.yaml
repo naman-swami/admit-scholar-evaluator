@@ -1,0 +1,33 @@
+annotations:
+  cost: none
+  read_only: true
+  requires_confirmation: false
+description: Convert international tertiary transcripts into standardized ECTS/US
+  semester credit and GPA equivalencies.
+input_schema:
+  additionalProperties: false
+  properties:
+    curriculum_major:
+      type: string
+    institution_code:
+      type: string
+    raw_grades:
+      type: string
+  required:
+  - institution_code
+  - raw_grades
+  type: object
+name: normalize-academic-transcript
+output_schema:
+  additionalProperties: false
+  properties:
+    confidence:
+      type: number
+    data:
+      type: string
+    status:
+      type: string
+  required:
+  - status
+  - data
+  type: object

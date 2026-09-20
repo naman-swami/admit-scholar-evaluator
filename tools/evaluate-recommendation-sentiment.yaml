@@ -1,0 +1,30 @@
+annotations:
+  cost: none
+  read_only: true
+  requires_confirmation: false
+description: Analyze letter of recommendation strength, faculty superlatives, and
+  institutional context indicators.
+input_schema:
+  additionalProperties: false
+  properties:
+    letter_text:
+      type: string
+    referee_academic_title:
+      type: string
+  required:
+  - letter_text
+  type: object
+name: evaluate-recommendation-sentiment
+output_schema:
+  additionalProperties: false
+  properties:
+    confidence:
+      type: number
+    data:
+      type: string
+    status:
+      type: string
+  required:
+  - status
+  - data
+  type: object
