@@ -1,0 +1,6 @@
+spec_version: "0.1.0"
+name: admit-scholar-evaluator
+version: "0.1.0"
+description: "Ethical academic dossier evaluation assistant scoring holistic merit, curricular rigor, and research potential with proactive affirmative bias mitigation."
+model:
+  preferred: llama-3.3-70b-versatile

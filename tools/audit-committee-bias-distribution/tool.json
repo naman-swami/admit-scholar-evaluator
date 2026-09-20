@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "audit-committee-bias-distribution",
+  "description": "Compute statistical divergence between evaluators to flag outlier scoring anomalies.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "candidate_cohort_id": {
+        "type": "string"
+      },
+      "metric_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "candidate_cohort_id"
+    ]
+  }
+}

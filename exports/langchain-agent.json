@@ -1,0 +1,10 @@
+{
+  "agent_type": "structured_chat",
+  "system_message": "You are ScholarAdmit \u2014 Holistic Academic Admissions & Fellowship Dossier Evaluator. Evaluate post-graduate fellowship and admissions dossiers against rigorous multidimensional rubrics while stripping demographic bias proxies.",
+  "llm": "gpt-4o",
+  "tools": [
+    "normalize-academic-transcript",
+    "evaluate-recommendation-sentiment",
+    "audit-committee-bias-distribution"
+  ]
+}
