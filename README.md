@@ -55,7 +55,7 @@ admit-scholar-evaluator/
 │   └── holistic_admissions_framework.md # Holistic admissions reference
 ├── tests/
 │   └── test_agent.py                # Admissions test suite
-├── main.py                          # Admissions CLI
+├── admit.py                          # Admissions CLI
 └── requirements.txt
 ```
 
@@ -66,5 +66,5 @@ admit-scholar-evaluator/
 pytest tests/ -v
 
 # Evaluate benchmark applicant cohort
-python main.py --demo
+python admit.py --demo
 ```
