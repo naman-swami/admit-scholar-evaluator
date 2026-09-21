@@ -1,0 +1,20 @@
+[
+  {
+    "app_id": "APP-101",
+    "student_name": "Maya Patel",
+    "gpa": 3.92,
+    "sat_score": 1540,
+    "first_gen": true,
+    "family_income_usd": 42000.0,
+    "research_pubs": 1
+  },
+  {
+    "app_id": "APP-102",
+    "student_name": "Julian Cole",
+    "gpa": 3.45,
+    "sat_score": 1380,
+    "first_gen": false,
+    "family_income_usd": 180000.0,
+    "research_pubs": 0
+  }
+]

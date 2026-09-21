@@ -1,19 +1,36 @@
-import json
 import argparse
-from src.admissions_engine import ScholarAdmissionsEngine
+import json
+import os
+from evaluators.scholarship_matrix import HolisticAdmissionsEngine
 
 def main():
-    parser = argparse.ArgumentParser(description="Scholar Admissions Evaluator CLI")
-    parser.add_argument("--demo", action="store_true", help="Run simulated graduate fellowship dossier audit")
+    parser = argparse.ArgumentParser(description="Admit Scholar Evaluator CLI")
+    parser.add_argument("--demo", action="store_true", help="Evaluate sample admissions cohort")
     args = parser.parse_args()
 
-    engine = ScholarAdmissionsEngine()
-    report = engine.evaluate_dossier(raw_grade=8.85, scale_type="10_point", publication_count=2, recommendation_score_5=4.8)
-    print("="*60)
-    print(" SCHOLARADMIT ACADEMIC MERIT & EQUITY AUDIT REPORT")
-    print("="*60)
-    print(json.dumps(report, indent=2))
-    print("="*60)
+    data_file = os.path.join(os.path.dirname(__file__), "fixtures", "applications", "sample_admissions_cohort.json")
+
+    if args.demo:
+        with open(data_file, "r") as f:
+            cohort = json.load(f)
+        print("=== ADMIT SCHOLAR HOLISTIC ADMISSIONS & SCHOLARSHIP REPORT ===\n")
+        for app in cohort:
+            res = HolisticAdmissionsEngine.evaluate_applicant(
+                gpa=app["gpa"],
+                sat=app["sat_score"],
+                first_gen=app["first_gen"],
+                family_income=app["family_income_usd"],
+                research_pubs=app["research_pubs"]
+            )
+            print(f"Applicant: {app['student_name']} (ID: {app['app_id']})")
+            print(f"  GPA: {app['gpa']} | SAT: {app['sat_score']} | First-Gen: {app['first_gen']}")
+            print(f"  Academic Index: {res['academic_index']} | Holistic Score: {res['composite_holistic_score']}")
+            print(f"  Decision: {res['admissions_decision']}")
+            if res["scholarship_grant_usd"] > 0:
+                print(f"  Awarded Scholarship Grant: ${res['scholarship_grant_usd']:,.2f}")
+            print("-" * 50)
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     main()
