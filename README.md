@@ -1,70 +1,46 @@
-# Admit Scholar Holistic Admissions & Endowment Evaluator
+# Admit Scholar Admissions & Fellowship Evaluator
 
-[![OpenGAP](https://img.shields.io/badge/OpenGAP-0.1.0-blue.svg)](agent.yaml)
-[![EdTech](https://img.shields.io/badge/Domain-Higher_Education_Admissions-darkgreen.svg)](docs/holistic_admissions_framework.md)
-[![Standard](https://img.shields.io/badge/Model-Holistic_Review_Index-teal.svg)](docs/holistic_admissions_framework.md)
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](requirements.txt)
-[![CI](https://img.shields.io/badge/CI-Passing-brightgreen.svg)](.github/workflows/ci.yml)
+> **Holistic University Admissions Review & Need-Aware Fellowship Allocation Engine**  
+> Operationalizing Academic Indices, Contextual Resilience Bonuses, and Endowment Grants.
 
-A university holistic admissions and endowment scholarship allocation platform balancing standardized academic indices with socioeconomic resilience indicators.
+---
 
-```
-                    ┌─────────────────────────┐
-                    │ Student Application Data│
-                    │ (GPA, SAT, Income, Pubs)│
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │ evaluators/scholarship  │
-                    └────────────┬────────────┘
-                                 │
-                 ┌───────────────┴───────────────┐
-                 ▼                               ▼
-      ┌─────────────────────┐         ┌─────────────────────┐
-      │  Academic Index     │         │ Resilience Bonus    │
-      │  (GPA + SAT Score)  │         │ (First-Gen & Need)  │
-      └──────────┬──────────┘         └──────────┬──────────┘
-                 │                               │
-                 └───────────────┬───────────────┘
-                                 ▼
-                    ┌─────────────────────────┐
-                    │ Admissions & Grant Plan │
-                    │ (ADMIT_FELLOW / Grant $)│
-                    └─────────────────────────┘
-```
+### Holistic Review Index Formulation
 
-## Features
+The composite evaluation index balances academic trajectory with contextual socioeconomic adversity:
 
-- **Holistic Scoring Matrix**: Synthesizes GPA, standardized testing, and research contributions.
-- **Endowment Grant Optimization**: Automatically pairs high-resilience applicants with scholarship grants.
-- **Applicant Cohort Benchmarks**: Includes multi-demographic student application records.
+$$\text{Composite Index} = 0.50 \cdot \text{AI}_{\text{norm}} + 0.30 \cdot \text{Curricular Rigor} + 0.20 \cdot \text{Contextual Resilience}$$
 
-## Directory Structure
+Where:
+- $\text{AI}_{\text{norm}}$: Standardized GPA and percentile test rankings.
+- **Contextual Resilience**: Multiplier derived from first-generation status, secondary school poverty index, and personal barriers overcome.
+
+---
+
+### Endowment Fellowship Matrix
 
 ```
-admit-scholar-evaluator/
-├── agent.yaml                       # OpenGAP 0.1.0 Manifest
-├── EXPLAINABILITY.md                # 7-checkpoint higher education provenance
-├── evaluators/
-│   └── scholarship_matrix.py        # Holistic scoring and endowment engine
-├── fixtures/
-│   └── applications/
-│       └── sample_admissions_cohort.json # Benchmark applicant cohort
-├── docs/
-│   └── holistic_admissions_framework.md # Holistic admissions reference
-├── tests/
-│   └── test_agent.py                # Admissions test suite
-├── admit.py                          # Admissions CLI
-└── requirements.txt
+                          Applicant Admitted
+                                  │
+                  ┌───────────────┴───────────────┐
+                  ▼                               ▼
+       Composite Index >= 92            Demonstrated Need >= $40k
+                  │                               │
+                  ▼                               ▼
+      [Presidential Merit Scholar]     [Opportunity Grant Fellowship]
+       $25,000 / year                   Full Tuition Endowment
 ```
 
-## Quick Start
+---
+
+### Admissions Operations CLI
 
 ```bash
-# Run admissions test suite
-pytest tests/ -v
-
-# Evaluate benchmark applicant cohort
+# Evaluate benchmark university applicant cohort
 python admit.py --demo
+
+# Execute admissions algorithm unit tests
+pytest tests/ -v
 ```
+
+Endowment grant bylaws, financial need verification protocols, and academic index calculations are maintained in [ENDOWMENT_CRITERIA.md](ENDOWMENT_CRITERIA.md).
